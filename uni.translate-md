@@ -1,73 +1,49 @@
 © iki1uc wieimmer
 
-BEN‑RESPO • UNI‑RESPO • WELT‑RESPO
-= Raptor‑Ebene • Herden‑Ebene • Urzeit‑Ebene
+# Site Status Checker
 
-FUNKTION.matrix
-Achsen: TMP / TRANS / WARB   = Sprint / Wander / Kampf
-Felder: WLOCH / KANAL / GATE = Pfad / Kanal / Tor
+A small, self-contained diagnostic tool for websites. It checks which
+pages/sections of a site are reachable, classifies their status, and
+compares pairs of sections to see how compatible they are.
 
-TMP.WLOCH   = Sprint‑Pfad
-TMP.KANAL   = Jagd‑Kanal
-TMP.GATE    = Beute‑Tor
+## What it does
 
-TRANS.WLOCH = Revier‑Pfad
-TRANS.KANAL = Wander‑Kanal
-TRANS.GATE  = Territorium‑Tor
+- Checks a fixed list of pages on the site (via HTTP HEAD requests).
+- Classifies each page's status as one of: OK, MISSING (wrong path),
+  NETWORK ERROR, READY, COMPATIBLE, FIXED, DONE, HELP NEEDED, UNCLEAR.
+- Computes a small set of properties for each status (a priority
+  score, a category label, likely cause, likely effect, and an
+  estimated impact/horizon score).
+- Compares pairs of pages and rates how well they "pair up"
+  (HOT / SYNC / START / LOW / FAIL) based on how similar their status,
+  category, and impact score are.
+- Displays the results as a readable report in the browser.
 
-WARB.WLOCH  = Angriffs‑Pfad
-WARB.KANAL  = Kampf‑Kanal
-WARB.GATE   = Impact‑Tor
+## Files
 
-BEN‑Axiom‑System = Alpha‑System
-BEN        = Alpha‑Dino
-BEN.tmp    = Alpha‑Sprint
-BEN.trans  = Alpha‑Wander
-BEN.warb   = Alpha‑Kampf
-BEN‑NC3×3 /7 = Fossil‑Raster /7
+| File | Purpose |
+|---|---|
+| `index.html` | Landing page with the human-readable status report |
+| `404.html` | Automatic diagnostic scanner, can be used as a custom 404 page |
+| `translate.md` | Full list of internal short codes and their plain-language meaning |
+| `README.md` | This file |
+| `LICENSE` | MIT License |
 
-CORE.route = Kern‑Pfad
-NET.route  = Netz‑Pfad
-LINK.route = Verbindungs‑Pfad
-SAT.route  = Himmel‑Pfad
-PUT.route  = Ablage‑Pfad
-TXT.put    = Schrift‑Ablage
-TXT.out    = Schrift‑Ausgabe
+## Usage
 
-SCAN.core  = Kern‑Scan
-SCAN.net   = Netz‑Scan
-SCAN.link  = Verbindungs‑Scan
-SCAN.sat   = Himmel‑Scan
-SCAN.dino  = Dino‑Scan
+Open `index.html` in a browser to see the status report. To use
+`404.html` as a real 404 page on GitHub Pages: repository Settings →
+Pages → Source: branch `main`, folder `/`.
 
-HOME  = Nest
-ORT   = Fundstelle
-USE   = Nutzung
-USER  = Jäger
+## Why the internal short codes?
 
-XI    = Kralle‑XI
-IX    = Kralle‑IX
-X4    = Kralle‑X4
+The tool uses short internal codes (a few letters, e.g. `RDY`, `FIT`,
+`MISS`) to keep the data compact and easy to process in code. A
+translation table (`translate.md`) maps every code to a plain-language
+label, so the output stays readable for anyone viewing the page,
+without needing to know the internal codes.
 
-HY    = Hydro‑Instinkt
-PE    = Paleo‑Echo
-PER   = Perma‑Instinkt
+## License
 
-ROM   = Knochen‑Archiv
-CACHE = Futter‑Cache
-CHDSK = Fossil‑Check
-
-STATUS:
-RDY = Bereit
-FIT = Stark
-FIX = Geheilt
-FIN = Ruhend
-MISS = Spur verloren
-FAIL = Abbruch
-HELP = Ruf
-ERROR = Unklar
-
-DINO.sort:
-T‑REX • SPINO • RAPTOR • ALLO • TRIKE • ANKYLO • STEGO • BRACHIO • DIPLO
-
-OUTPUT.done = Fossil‑Abschluss
+MIT — free to use and modify. Author credit (**iki1uc**) must be
+retained per the license terms. See `LICENSE`.
