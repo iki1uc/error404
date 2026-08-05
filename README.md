@@ -1,3 +1,4 @@
+ © iki1uc wieimmer
 Site Status Checker
 
 A small, self-contained diagnostic tool for websites. It checks which pages/sections of a site are reachable, classifies their status, and compares pairs of sections to see how compatible they are.
