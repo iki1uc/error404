@@ -1,4 +1,3 @@
-
 const UT = {
   "OK": "W",
   "READY": "A",
@@ -9,6 +8,7 @@ const UT = {
   "UNCLEAR": "Y",
   "ERROR": "C"
 };
+
 
 ## License
 
