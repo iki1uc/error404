@@ -1,3 +1,4 @@
+© iki1uc wieimmer
 # ERROR404 – ECO / MXU Diagnose & KOOP‑CORE  
 REV 8‑78 – Universal‑Fehleranalyse für alle ECO‑/MXU‑Räume
 
