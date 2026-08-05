@@ -1,0 +1,93 @@
+<!--
+  ECO / MXU UNIVERSAL-ZUSTÄNDE
+  © iki1uc — frei nutzbar unter MIT-Lizenz (siehe LICENSE-Datei im Repo)
+  https://github.com/iki1uc
+-->
+<script>
+// ECO / MXU UNIVERSAL-ZUSTÄNDE
+const STATES = {
+    OK:   { bp:1, achse:"X",  urs:"Vorhanden",       wir:"Normal",     hor:0 },
+    MISS: { bp:2, achse:"Δ",  urs:"Pfad falsch",     wir:"Umleitung",  hor:1 },
+    FAIL: { bp:9, achse:"Ø",  urs:"Netzwerkfehler",  wir:"Abbruch",    hor:9 },
+    RDY:  { bp:3, achse:"R",  urs:"Bereit",          wir:"Start",      hor:2 },
+    FIT:  { bp:4, achse:"F",  urs:"Kompatibel",      wir:"Synergie",   hor:3 },
+    FIX:  { bp:5, achse:"C",  urs:"Repariert",       wir:"Stabil",     hor:2 },
+    FIN:  { bp:6, achse:"N",  urs:"Abgeschlossen",   wir:"Ruhe",       hor:1 },
+    HELP: { bp:7, achse:"H",  urs:"Assistenz",       wir:"Support",    hor:2 },
+    ERROR:{ bp:8, achse:"E",  urs:"Unklar",          wir:"Analyse",    hor:5 }
+};
+// 9 Räume (häufigste MXU-Räume)
+const ROOMS = [
+    "INDEX.html",
+    "DOM/DOM.html",
+    "MARKT/markt.html",
+    "BOERSE/boerse.html",
+    "EVO/EVO.html",
+    "EOS/EOS.html",
+    "funktion/funktion.html",
+    "respo/respo.html",
+    "tool48/pyramide.html"
+];
+// Raum-Check
+async function checkRoom(path) {
+    try {
+        const res = await fetch(path, { method: "HEAD" });
+        return res.ok ? "OK" : "MISS";
+    } catch {
+        return "FAIL";
+    }
+}
+// Diagnose
+function ecoDiagnose(status, room) {
+    const s = STATES[status] || STATES.ERROR;
+    return {
+        room,
+        status,
+        beamPoint: s.bp,
+        achse: s.achse,
+        ursache: s.urs,
+        wirkung: s.wir,
+        horizont: s.hor
+    };
+}
+// KOOP – Team-Bildung
+function koop(a, b) {
+    return {
+        pair: a.room + " ↔ " + b.room,
+        achseMatch: a.achse === b.achse ? "OK" : "Δ",
+        beamMatch: Math.abs(a.beamPoint - b.beamPoint) <= 2 ? "OK" : "MISS",
+        horizontMatch: Math.abs(a.horizont - b.horizont) <= 2 ? "OK" : "MISS",
+        kooperation:
+            (a.status === "OK" && b.status === "OK") ? "HOT" :
+            (a.status === "MISS" && b.status === "MISS") ? "LOW" :
+            (a.status === "FIT"  && b.status === "FIT")  ? "SYNC" :
+            (a.status === "RDY"  && b.status === "RDY")  ? "START" :
+            "FAIL"
+    };
+}
+// Matrix
+function buildMatrix(results) {
+    const matrix = [];
+    for (let i = 0; i < results.length; i++) {
+        for (let j = i + 1; j < results.length; j++) {
+            matrix.push(koop(results[i], results[j]));
+        }
+    }
+    return matrix;
+}
+// Hauptlauf
+(async () => {
+    const results = [];
+    for (const room of ROOMS) {
+        const status = await checkRoom("../" + room);
+        results.push(ecoDiagnose(status, room));
+    }
+    const matrix = buildMatrix(results);
+    document.getElementById("eco404").innerHTML =
+        JSON.stringify({
+            diagnose: results,
+            team: matrix
+        }, null, 2);
+})();
+</script>
+<pre id="eco404">REV 8‑78 – KOOP CORE – Lade…</pre>
