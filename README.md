@@ -1,32 +1,10 @@
-© iki1uc wieimmer
-# ERROR404 – ECO / MXU Diagnose & KOOP‑CORE  
-REV 8‑78 – Universal‑Fehleranalyse für alle ECO‑/MXU‑Räume
+Site Status Checker
 
-Dieses Projekt enthält den **REV 8‑78 KOOP‑CORE**,  
-ein universelles Diagnose‑Modul für ECO / MXU Systeme.
+A small, self-contained diagnostic tool for websites. It checks which pages/sections of a site are reachable, classifies their status, and compares pairs of sections to see how compatible they are.
 
-## Funktionen
-
-- Erkennung von 9 häufigsten ECO/MXU‑Räumen  
-- Klassifikation in OK / MISS / FAIL / RDY / FIT / FIX / FIN / HELP / ERROR  
-- Berechnung von:
-  - Beam‑Point  
-  - Achse  
-  - Ursache  
-  - Wirkung  
-  - Horizont  
-- Team‑Matrix:
-  - Achsen‑Match  
-  - Beam‑Match  
-  - Horizont‑Match  
-  - Kooperations‑Grad (HOT / LOW / SYNC / START / FAIL)
-
-## Dateien
-
-- **index.html** – Startseite  
-- **404.html** – REV 8‑78 KOOP‑CORE Scanner  
-- **LICENSE** – MIT Lizenz  
-
-## Lizenz
-
-MIT – frei nutzbar, frei erweiterbar.
+What it does
+Checks a fixed list of pages on the site (via HTTP HEAD requests).
+Classifies each page's status as one of: OK, MISSING (wrong path), NETWORK ERROR, READY, COMPATIBLE, FIXED, DONE, HELP NEEDED, UNCLEAR.
+Computes a small set of properties for each status (a priority score, a category label, likely cause, likely effect, and an estimated impact/horizon score).
+Compares pairs of pages and rates how well they "pair up" (HOT / SYNC / START / LOW / FAIL) based on how similar their status, category, and impact score are.
+Displays the results as a readable report in the browser.
