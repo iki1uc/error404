@@ -3,49 +3,44 @@
 <!-- © iki1uc wieimmer -->
 <head>
 <meta charset="UTF-8">
-<title>DIAMANT • BEN‑UNI‑RESPO Engine</title>
-
-<style>
-body {
-  background:#000;
-  color:#eee;
-  font-family:Consolas, monospace;
-  padding:20px;
-}
-h1 {
-  color:#00e0ff;
-  text-shadow:0 0 10px #00e0ff;
-}
-pre {
-  background:#111;
-  padding:15px;
-  border:1px solid #00e0ff;
-  margin-top:20px;
-  white-space:pre-wrap;
-}
-.dia {
-  color:#00e0ff;
-  text-shadow:0 0 8px #00e0ff;
-  font-weight:bold;
-}
-</style>
+<title>INDEX • DIAMANT‑SYSTEM</title>
 </head>
 
 <body>
 
-<h1>BEN‑RESPO • UNI‑RESPO • WELT‑RESPO</h1>
+<pre>
 
-<pre id="ridvan-core">
+INDEX • DIAMANT‑SYSTEM
 © iki1uc wieimmer
 
-◈ DIAMANT‑KERN (Einheit der 5 Ebenen)
-• geo.md      → Punkt (◉)
-• pyr.md      → Achse (◎)
-• pyramide.md → Form (△)
-• cube.md     → Raum (▣)
-• cycle.md    → Zyklus (↺)
+────────────────────────────────────────
+EINHEIT DER 6 EBENEN
+────────────────────────────────────────
 
-◈ Diamant‑Mini‑Symbol:
+1. PUNKT • geo.md
+      ◉
+   ↗     ↘
+  3         9
+
+2. ACHSE • pyr.md
+   ↘       ↗
+      ◎
+   ↗     ↘
+  81       ◆
+
+3. PYRAMIDE • pyramide.md
+   ↘       ↗
+      △
+
+4. CUBE • cube.md
+   ↗     ↘
+  27       ▣
+
+5. ZYKLUS • cycle.md
+   ↘       ↗
+      3 ↺
+
+6. DIAMANT • diamant.md
         ◉
       /   \
      ◎     ◎
@@ -55,99 +50,41 @@ pre {
       ▣   ▣
         ↺
 
-BEN‑RESPO • UNI‑RESPO • WELT‑RESPO
-FUNKTION.matrix
-TMP.WLOCH
-TMP.KANAL
-TMP.GATE
-TRANS.WLOCH
-TRANS.KANAL
-TRANS.GATE
-WARB.WLOCH
-WARB.KANAL
-WARB.GATE
+────────────────────────────────────────
+CSV‑ROHDATEN
+────────────────────────────────────────
 
-BEN
-BEN.tmp
-BEN.trans
-BEN.warb
-BEN‑NC3×3
+datei-bedeutung-5.csv
+ebene-datei-5.csv
 
-CORE.route
-NET.route
-LINK.route
-SAT.route
-PUT.route
-TXT.put
-TXT.out
+Diese Dateien liefern die Roh‑Vektoren
+für Punkt, Achse, Form, Raum, Zyklus und Einheit.
 
-SCAN.core
-SCAN.net
-SCAN.link
-SCAN.sat
-SCAN.dino
+────────────────────────────────────────
+VECTOR‑BASIS
+────────────────────────────────────────
 
-HOME
-ORT
-USE
-USER
+.vector  → reine Koordinaten
+.raw     → unverarbeitete Spannungen
+.csv     → Ebenen‑Zuordnung
 
-XI
-IX
-X4
+────────────────────────────────────────
+IKI1UC‑DIAMANT
+────────────────────────────────────────
 
-HY
-PE
-PER
+Der Diamant verbindet:
 
-ROM
-CACHE
-CHDSK
+◉  Punkt
+◎  Achse
+△  Form
+▣  Raum
+↺  Zyklus
 
-RDY
-FIT
-FIX
-FIN
-MISS
-FAIL
-HELP
-ERROR
+zu einer geschlossenen Einheit.
 
-T‑REX
-SPINO
-RAPTOR
-ALLO
-TRIKE
-ANKYLO
-STEGO
-BRACHIO
-DIPLO
+────────────────────────────────────────
 
-OUTPUT.done
 </pre>
-
-<script>
-// WASDQEYC Translator
-const UT = {
-  "OK": "W",
-  "READY": "A",
-  "COMPATIBLE": "S",
-  "FIXED": "D",
-  "DONE": "Q",
-  "HELP": "E",
-  "UNCLEAR": "Y",
-  "ERROR": "C"
-};
-
-function translateUT(text) {
-  return text.replace(/\b[A-Z0-9\.\-×]+/g, match => UT[match] || match);
-}
-
-window.addEventListener("load", () => {
-  const pre = document.getElementById("ridvan-core");
-  pre.textContent = translateUT(pre.textContent);
-});
-</script>
 
 </body>
 </html>
