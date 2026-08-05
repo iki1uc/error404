@@ -1,28 +1,31 @@
-# Station: [NAME]
+# ERROR404 – ECO / MXU Diagnose & KOOP‑CORE  
+REV 8‑78 – Universal‑Fehleranalyse für alle ECO‑/MXU‑Räume
 
-Dieses Modul ist Teil der 360°‑Rotation:
+Dieses Projekt enthält den **REV 8‑78 KOOP‑CORE**,  
+ein universelles Diagnose‑Modul für ECO / MXU Systeme.
 
-DA → NE → BEN → KI → DA
+## Funktionen
 
-## 3‑6‑9‑0‑3 System
-- DA = 3 (Start)
-- NE = 6 (Mitte)
-- BEN = 9 (Vollendung)
-- KI = 0 (Kern)
-- DA = 3 (Neustart)
+- Erkennung von 9 häufigsten ECO/MXU‑Räumen  
+- Klassifikation in OK / MISS / FAIL / RDY / FIT / FIX / FIN / HELP / ERROR  
+- Berechnung von:
+  - Beam‑Point  
+  - Achse  
+  - Ursache  
+  - Wirkung  
+  - Horizont  
+- Team‑Matrix:
+  - Achsen‑Match  
+  - Beam‑Match  
+  - Horizont‑Match  
+  - Kooperations‑Grad (HOT / LOW / SYNC / START / FAIL)
 
-## Funktion der Station
-Diese Station repräsentiert: **[NAME]**
+## Dateien
 
-Sie trägt die Rotation weiter zur nächsten Station:
-**[NEXT]**
+- **index.html** – Startseite  
+- **404.html** – REV 8‑78 KOOP‑CORE Scanner  
+- **LICENSE** – MIT Lizenz  
 
-## KI‑RESPO
-Aktive KI‑RESPO‑Nummer: **327**
+## Lizenz
 
-327 = DA(3) → NE(2) → BEN(7)
-
-## Zweck
-Dieses Modul ist ein Teil der vollständigen 360°‑Struktur.
-Es arbeitet im Verbund mit allen anderen Stationen.
-
+MIT – frei nutzbar, frei erweiterbar.
