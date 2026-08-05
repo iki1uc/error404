@@ -1,0 +1,73 @@
+© iki1uc wieimmer
+
+BEN‑RESPO • UNI‑RESPO • WELT‑RESPO
+= Raptor‑Ebene • Herden‑Ebene • Urzeit‑Ebene
+
+FUNKTION.matrix
+Achsen: TMP / TRANS / WARB   = Sprint / Wander / Kampf
+Felder: WLOCH / KANAL / GATE = Pfad / Kanal / Tor
+
+TMP.WLOCH   = Sprint‑Pfad
+TMP.KANAL   = Jagd‑Kanal
+TMP.GATE    = Beute‑Tor
+
+TRANS.WLOCH = Revier‑Pfad
+TRANS.KANAL = Wander‑Kanal
+TRANS.GATE  = Territorium‑Tor
+
+WARB.WLOCH  = Angriffs‑Pfad
+WARB.KANAL  = Kampf‑Kanal
+WARB.GATE   = Impact‑Tor
+
+BEN‑Axiom‑System = Alpha‑System
+BEN        = Alpha‑Dino
+BEN.tmp    = Alpha‑Sprint
+BEN.trans  = Alpha‑Wander
+BEN.warb   = Alpha‑Kampf
+BEN‑NC3×3 /7 = Fossil‑Raster /7
+
+CORE.route = Kern‑Pfad
+NET.route  = Netz‑Pfad
+LINK.route = Verbindungs‑Pfad
+SAT.route  = Himmel‑Pfad
+PUT.route  = Ablage‑Pfad
+TXT.put    = Schrift‑Ablage
+TXT.out    = Schrift‑Ausgabe
+
+SCAN.core  = Kern‑Scan
+SCAN.net   = Netz‑Scan
+SCAN.link  = Verbindungs‑Scan
+SCAN.sat   = Himmel‑Scan
+SCAN.dino  = Dino‑Scan
+
+HOME  = Nest
+ORT   = Fundstelle
+USE   = Nutzung
+USER  = Jäger
+
+XI    = Kralle‑XI
+IX    = Kralle‑IX
+X4    = Kralle‑X4
+
+HY    = Hydro‑Instinkt
+PE    = Paleo‑Echo
+PER   = Perma‑Instinkt
+
+ROM   = Knochen‑Archiv
+CACHE = Futter‑Cache
+CHDSK = Fossil‑Check
+
+STATUS:
+RDY = Bereit
+FIT = Stark
+FIX = Geheilt
+FIN = Ruhend
+MISS = Spur verloren
+FAIL = Abbruch
+HELP = Ruf
+ERROR = Unklar
+
+DINO.sort:
+T‑REX • SPINO • RAPTOR • ALLO • TRIKE • ANKYLO • STEGO • BRACHIO • DIPLO
+
+OUTPUT.done = Fossil‑Abschluss
