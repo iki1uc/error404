@@ -105,68 +105,16 @@ OUTPUT.done
 </pre>
 
 <script>
-// UNIVERSAL TRANSLATER – Wörterbuch
+// UNIVERSAL TRANSLATER – Wörterbuch (WASDQEYC)
 const UT = {
-  "BEN-RESPO": "Raptor‑Ebene",
-  "UNI-RESPO": "Herden‑Ebene",
-  "WELT-RESPO": "Urzeit‑Ebene",
-  "TMP.WLOCH": "Sprint‑Pfad",
-  "TMP.KANAL": "Jagd‑Kanal",
-  "TMP.GATE": "Beute‑Tor",
-  "TRANS.WLOCH": "Revier‑Pfad",
-  "TRANS.KANAL": "Wander‑Kanal",
-  "TRANS.GATE": "Territorium‑Tor",
-  "WARB.WLOCH": "Angriffs‑Pfad",
-  "WARB.KANAL": "Kampf‑Kanal",
-  "WARB.GATE": "Impact‑Tor",
-  "BEN": "Alpha‑Dino",
-  "BEN.tmp": "Alpha‑Sprint",
-  "BEN.trans": "Alpha‑Wander",
-  "BEN.warb": "Alpha‑Kampf",
-  "BEN-NC3×3": "Fossil‑Raster",
-  "CORE.route": "Kern‑Pfad",
-  "NET.route": "Netz‑Pfad",
-  "LINK.route": "Verbindungs‑Pfad",
-  "SAT.route": "Himmel‑Pfad",
-  "PUT.route": "Ablage‑Pfad",
-  "TXT.put": "Schrift‑Ablage",
-  "TXT.out": "Schrift‑Ausgabe",
-  "SCAN.core": "Kern‑Scan",
-  "SCAN.net": "Netz‑Scan",
-  "SCAN.link": "Verbindungs‑Scan",
-  "SCAN.sat": "Himmel‑Scan",
-  "SCAN.dino": "Dino‑Scan",
-  "HOME": "Nest",
-  "ORT": "Fundstelle",
-  "USE": "Nutzung",
-  "USER": "Jäger",
-  "XI": "Kralle‑XI",
-  "IX": "Kralle‑IX",
-  "X4": "Kralle‑X4",
-  "HY": "Hydro‑Instinkt",
-  "PE": "Paleo‑Echo",
-  "PER": "Perma‑Instinkt",
-  "ROM": "Knochen‑Archiv",
-  "CACHE": "Futter‑Cache",
-  "CHDSK": "Fossil‑Check",
-  "RDY": "Bereit",
-  "FIT": "Stark",
-  "FIX": "Geheilt",
-  "FIN": "Ruhend",
-  "MISS": "Spur verloren",
-  "FAIL": "Abbruch",
-  "HELP": "Ruf",
-  "ERROR": "Unklar",
-  "T-REX": "Alpha",
-  "SPINO": "Wasser‑Alpha",
-  "RAPTOR": "Jäger",
-  "ALLO": "Zweit‑Alpha",
-  "TRIKE": "Schild‑Dino",
-  "ANKYLO": "Panzer‑Dino",
-  "STEGO": "Rücken‑Dino",
-  "BRACHIO": "Langhals",
-  "DIPLO": "Ultra‑Langhals",
-  "OUTPUT.done": "Fossil‑Abschluss"
+  "OK": "W",
+  "READY": "A",
+  "COMPATIBLE": "S",
+  "FIXED": "D",
+  "DONE": "Q",
+  "HELP": "E",
+  "UNCLEAR": "Y",
+  "ERROR": "C"
 };
 
 // UNIVERSAL TRANSLATER – Engine
@@ -174,8 +122,8 @@ function translateUT(text) {
   return text.replace(/\b[A-Z0-9\.\-×]+/g, match => UT[match] || match);
 }
 
-// Aktivierung
-window.addEventListener("DOMContentLoaded", () => {
+// Aktivierung NACH Status‑Checker
+window.addEventListener("load", () => {
   const pre = document.getElementById("ridvan-core");
   pre.textContent = translateUT(pre.textContent);
 });
