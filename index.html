@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
-© iki1uc wieimmer
-  <head>
+<!-- © iki1uc wieimmer -->
+<head>
 <meta charset="UTF-8">
 <title>BEN • UNI‑RESPO Engine</title>
 
@@ -22,6 +22,67 @@ h1,h2 {
   margin:20px 0;
   border-radius:8px;
   background:#111;
+}
+.matrix {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+.cell {
+  padding:10px;
+  background:#222;
+  border:1px solid #333;
+  text-align:center;
+  border-radius:6px;
+}
+pre {
+  background:#111;
+  padding:15px;
+  border:1px solid #00e0ff;
+  margin-top:20px;
+  white-space:pre-wrap;
+}
+</style>
+</head>
+
+<body>
+
+<h1>BEN‑RESPO • UNI‑RESPO • WELT‑RESPO</h1>
+
+<!-- FUNKTION.matrix -->
+<div class="block">
+  <h2>FUNKTION.matrix</h2>
+  <p>Achsen: TMP / TRANS / WARB<br>
+     Felder: WLOCH / KANAL / GATE</p>
+
+  <div class="matrix">
+    <div class="cell">TMP.WLOCH</div>
+    <div class="cell">TMP.KANAL</div>
+    <div class="cell">TMP.GATE</div>
+
+    <div class="cell">TRANS.WLOCH</div>
+    <div class="cell">TRANS.KANAL</div>
+    <div class="cell">TRANS.GATE</div>
+
+    <div class="cell">WARB.WLOCH</div>
+    <div class="cell">WARB.KANAL</div>
+    <div class="cell">WARB.GATE</div>
+  </div>
+</div>
+
+<!-- BEN‑Axiom‑System -->
+<div class="block">
+  <h2>BEN‑Axiom‑System</h2>
+  <div class="matrix">
+    <div class="cell">BEN</div>
+    <div class="cell">BEN.tmp</div>
+    <div class="cell">BEN.trans</div>
+    <div class="cell">BEN.warb</div>
+    <div class="cell">BEN‑NC3×3 /7</div>
+  </div>
+</div>
+
+<!-- RIDVAN‑CORE OUTPUT -->
 <pre id="ridvan-core">
 © iki1uc wieimmer
 
@@ -64,3 +125,6 @@ T-REX • SPINO • RAPTOR • ALLO • TRIKE • ANKYLO • STEGO • BRACHIO �
 
 OUTPUT.done
 </pre>
+
+</body>
+</html>
