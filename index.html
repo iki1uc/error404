@@ -3,7 +3,7 @@
 <!-- © iki1uc wieimmer -->
 <head>
 <meta charset="UTF-8">
-<title>BEN • UNI‑RESPO Engine</title>
+<title>DIAMANT • BEN‑UNI‑RESPO Engine</title>
 
 <style>
 body {
@@ -12,7 +12,7 @@ body {
   font-family:Consolas, monospace;
   padding:20px;
 }
-h1,h2 {
+h1 {
   color:#00e0ff;
   text-shadow:0 0 10px #00e0ff;
 }
@@ -23,6 +23,11 @@ pre {
   margin-top:20px;
   white-space:pre-wrap;
 }
+.dia {
+  color:#00e0ff;
+  text-shadow:0 0 8px #00e0ff;
+  font-weight:bold;
+}
 </style>
 </head>
 
@@ -32,6 +37,23 @@ pre {
 
 <pre id="ridvan-core">
 © iki1uc wieimmer
+
+◈ DIAMANT‑KERN (Einheit der 5 Ebenen)
+• geo.md      → Punkt (◉)
+• pyr.md      → Achse (◎)
+• pyramide.md → Form (△)
+• cube.md     → Raum (▣)
+• cycle.md    → Zyklus (↺)
+
+◈ Diamant‑Mini‑Symbol:
+        ◉
+      /   \
+     ◎     ◎
+    /  \ /  \
+   △    △    △
+    \  / \  /
+      ▣   ▣
+        ↺
 
 BEN‑RESPO • UNI‑RESPO • WELT‑RESPO
 FUNKTION.matrix
@@ -105,7 +127,7 @@ OUTPUT.done
 </pre>
 
 <script>
-// UNIVERSAL TRANSLATER – Wörterbuch (WASDQEYC)
+// WASDQEYC Translator
 const UT = {
   "OK": "W",
   "READY": "A",
@@ -117,12 +139,10 @@ const UT = {
   "ERROR": "C"
 };
 
-// UNIVERSAL TRANSLATER – Engine
 function translateUT(text) {
   return text.replace(/\b[A-Z0-9\.\-×]+/g, match => UT[match] || match);
 }
 
-// Aktivierung NACH Status‑Checker
 window.addEventListener("load", () => {
   const pre = document.getElementById("ridvan-core");
   pre.textContent = translateUT(pre.textContent);
