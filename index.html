@@ -1,43 +1,9 @@
 <!DOCTYPE html>
 <html lang="de">
-<!-- © iki1uc wieimmer -->
-<!--
-  <!--
-   INDEX‑SCHABLONE
-
-   Diese Seite ist der HOME‑Punkt (◆)
-   - Fehler in ME → Startpunkt falsch
-   - Fehler in OUR → Verbindung fehlt
-   - Fehler in ORT → Ebene falsch
-   - Fehler in T → Tiefe falsch
--->
-
-   IKEA‑FEHLER‑SCHABLONE • NAVI‑DREIECK
-
-   ACHSEN:
-   Y = LINKS
-   Z = RECHTS
-   X = HÖHE
-   T = TIEFE
-   O = URSPRUNG
-
-   META‑DREIECK:
-   ME   = innerer Punkt (Selbst)
-   OUR  = gemeinsame Achse (Team)
-   ORT  = Position / Ebene
-   HOME = Kern / Stabilität
-
-   FEHLER‑WEGE:
-   - Wenn Datei fehlt → Y‑Achse (links prüfen)
-   - Wenn Pfad falsch → Z‑Achse (rechts korrigieren)
-   - Wenn Ebene falsch → ORT‑Achse (△)
-   - Wenn Tiefe falsch → T‑Achse (Layer)
-   - Wenn Kern bricht → HOME‑Achse (◆)
-   - Wenn Orbit unsichtbar → GHOST‑ORBIT prüfen
--->
- <head>
+<head>
 <meta charset="UTF-8">
-<title>GEO‑POINT ALPHA</title>
+<title>GEO‑POINT ALPHA • VOLLKREIS‑ENGINE</title>
+
 <style>
 body { background:#000; color:#0f0; font-family:Consolas; padding:20px; }
 h1 { color:#0f0; }
@@ -45,6 +11,9 @@ pre { background:#111; padding:20px; border-left:4px solid #0f0; }
 .section { margin-bottom:40px; }
 .title { color:#0f0; font-size:22px; margin-bottom:10px; }
 .block { background:#111; padding:15px; border-left:3px solid #0f0; margin-bottom:20px; }
+.vollkreis-engine { background:#111; color:#0f0; padding:20px; border-left:4px solid #0f0; }
+.evo { background:#000; padding:10px; margin:10px 0; border-left:3px solid #0f0; }
+.output { background:#000; padding:10px; margin-top:20px; border-left:3px solid #0f0; }
 </style>
 </head>
 
@@ -64,104 +33,149 @@ pre { background:#111; padding:20px; border-left:4px solid #0f0; }
 ↺ cycle.md — Zyklus‑Axiom  
 ◆ diamant.md — Diamant‑Axiom  
 </div>
-
-<div class="block">
-        ◉
-      /   \
-     ◎     ◎
-    /  \ /  \
-   △    △    △
-    \  / \  /
-      ▣   ▣
-        ↺
-</div>
 </div>
 
-<!-- META‑MODULE -->
-<div class="section">
-<div class="title">META‑MODULE</div>
+<!-- VOLLKREIS‑ENGINE -->
+<div class="vollkreis-engine">
 
-<div class="block">
-<strong>BERRY‑CORE</strong><br>
-ORT: META<br>
-LAGE: FEHLER → ENERGIE<br>
-BEAM‑POINT: ooOO‑IMPULS<br>
-FORMEL: berry = error × humor × orbit<br>
-Datei: boost.html
+  <h2>VOLLKREIS‑ENGINE • NET‑LINK‑CONNECT • 360°</h2>
+  <p>Beweisbare 3‑EVO‑Technologie</p>
+
+  <!-- 3 EVOS -->
+  <div class="evo-section">
+    <h3>3 EVOS</h3>
+
+    <div class="evo">
+      <strong>[Boden‑EVO](ca://s?q=Boden_EVO_erklaeren)</strong><br>
+      Achsen: Y/Z<br>
+      Pointer: Ground‑Pointer<br>
+      Bewegung: Vor / Rück<br>
+      Bereich: Pfad, Struktur, Routing
+    </div>
+
+    <div class="evo">
+      <strong>[Luft‑EVO](ca://s?q=Luft_EVO_erklaeren)</strong><br>
+      Achse: X<br>
+      Pointer: Air‑Pointer<br>
+      Bewegung: Hoch / Tief<br>
+      Bereich: Layer, Höhe, Architektur
+    </div>
+
+    <div class="evo">
+      <strong>[Orbit‑EVO](ca://s?q=Orbit_EVO_erklaeren)</strong><br>
+      Achsen: O/H<br>
+      Pointer: Orbit‑Pointer<br>
+      Bewegung: Umlauf links / rechts<br>
+      Bereich: Ursprung, Kern, Wiederholung
+    </div>
+  </div>
+
+  <!-- 360° Grad-Skala -->
+  <div class="grad-section">
+    <h3>360° Grad‑Skala</h3>
+    <ul>
+      <li><strong>0°</strong> – Boden‑Start (Y)</li>
+      <li><strong>60°</strong> – Boden‑Struktur (Z)</li>
+      <li><strong>120°</strong> – Luft‑Layer (X/T)</li>
+      <li><strong>180°</strong> – Orbit‑Ursprung (O)</li>
+      <li><strong>240°</strong> – Orbit‑Kern (H)</li>
+      <li><strong>300°</strong> – Orbit‑Diamant (H)</li>
+      <li><strong>360°</strong> – Vollkreis geschlossen (O/H)</li>
+    </ul>
+  </div>
+
+  <!-- Bewegungslogik -->
+  <div class="bewegung-section">
+    <h3>8‑Fach Bewegungslogik</h3>
+    <ul>
+      <li>Boden: Vor / Rück</li>
+      <li>Luft: Hoch / Tief</li>
+      <li>Orbit: Umlauf links / rechts</li>
+      <li>Meta‑Orbit: Ursprung öffnen / Kern schließen</li>
+    </ul>
+  </div>
+
+  <!-- Fehlerwege -->
+  <div class="fehler-section">
+    <h3>Fehlerwege</h3>
+    <ul>
+      <li>Datei fehlt → Y</li>
+      <li>Pfad falsch → Z</li>
+      <li>Layer falsch → T</li>
+      <li>Struktur unklar → X</li>
+      <li>Ursprung falsch → O</li>
+      <li>Kern bricht → H</li>
+      <li>Orbit unsichtbar → Ghost‑Orbit</li>
+    </ul>
+  </div>
+
+  <!-- Echtzeit-Diagnose -->
+  <div class="diagnose-section">
+    <h3>Echtzeit‑Diagnose</h3>
+    <pre id="vollkreis-diagnose">Warte auf Status…</pre>
+  </div>
+
+  <!-- NET-LINK OUTPUT -->
+  <div id="status-output" class="output">Status: —</div>
+  <div id="evo-output" class="output">EVO: —</div>
+  <div id="axis-output" class="output">Achse: —</div>
+  <div id="pointer-output" class="output">Pointer: —</div>
+  <div id="machine-output" class="output">Maschinen‑Sprache: —</div>
+  <div id="net-output" class="output">NET: —</div>
+  <div id="link-output" class="output">LINK: —</div>
+
 </div>
 
-<div class="block">
-<strong>WRAIGHT‑IMPULS</strong><br>
-ORT: META<br>
-LAGE: VERSTÄRKER<br>
-BEAM‑POINT: 1.33 × BASIS<br>
-FORMEL: wraight = beam × 1.33 × orbit<br>
-Datei: HELP.html
-</div>
+<script>
+/* STATUS CHECKER → VOLLKREIS ENGINE */
+function VollkreisEngine(status) {
 
-<div class="block">
-<strong>CODER‑GEFÜHLE</strong><br>
-OK → 🟢 stabil<br>
-SOFTOK → 🟩 leicht<br>
-HELP → 🟡 braucht Hilfe<br>
-GHOST → 👻 imaginär<br>
-SHADE → ⚫ blockiert<br>
-ERROR → 🔴 hamm / berry<br>
-UNCLEAR → ⚪ unklar<br>
-Datei: build.html
-</div>
+  document.getElementById("status-output").innerText = "Status: " + status;
 
-<div class="block">
-<strong>GHOST‑ORBIT</strong><br>
-ORT: ORDNERNAME<br>
-LAGE: UNSICHTBAR<br>
-BEAM‑POINT: sin(t) × 0.83<br>
-FORMEL: ghostOrbit = ort × sin(t) × 0.83<br>
-Datei: error.html
-</div>
+  let evo="", axis="", pointer="", machine="", link="";
 
-<div class="block">
-<strong>SHADE‑LAYER</strong><br>
-ORT: SYSTEM<br>
-LAGE: BLOCKIERT<br>
-BEAM‑POINT: tiefe<br>
-FORMEL: shade = depth × cos(t)<br>
-Datei: re.html
-</div>
+  switch(status) {
+    case "OK":
+    case "READY":
+    case "FIXED":
+    case "DONE":
+      evo="EVO-GROUND"; axis="Y/Z"; pointer="GROUND EDIT POINTER"; link="Y → Z"; break;
 
-<div class="block">
-<strong>HELP‑HEATMAP</strong><br>
-ORT: REPO<br>
-LAGE: KLEIN / MITTEL<br>
-BEAM‑POINT: size / 1000<br>
-FORMEL: helpHeat = size × beam<br>
-Datei: sub.html
-</div>
-</div>
- 
-function diagnosePage(status, page) {
+    case "HELP":
+    case "UNCLEAR":
+      evo="EVO-AIR"; axis="X"; pointer="AIR EDIT POINTER"; link="X"; break;
 
-    // IKEA‑NAVI‑DREIECK
-    const navi = {
-        Y: "links prüfen",
-        Z: "rechts korrigieren",
-        X: "Höhe / Struktur prüfen",
-        T: "Tiefe / Layer prüfen",
-        O: "Ursprung / Startpunkt prüfen"
-    };
+    case "ERROR":
+    case "QI":
+    case "FC":
+    case "CORE":
+      evo="EVO-ORBIT"; axis="O/H"; pointer="ORBIT EDIT POINTER"; link="O → H"; break;
 
-    // Fehler‑Richtungslogik
-    const direction =
-        status === "MISSING" ? navi.Y :
-        status === "ERROR"   ? navi.T :
-        status === "UNCLEAR" ? navi.X :
-        status === "HELP"    ? navi.Z :
-        navi.O;
+    default:
+      evo="UNKNOWN"; axis="—"; pointer="—"; link="—";
+  }
 
-    return {
-        page,
-        status,
-        direction
-    };
+  machine = "MSIG{" + evo + "|" + axis + "|" + pointer + "}";
+
+  document.getElementById("evo-output").innerText = "EVO: " + evo;
+  document.getElementById("axis-output").innerText = "Achse: " + axis;
+  document.getElementById("pointer-output").innerText = "Pointer: " + pointer;
+  document.getElementById("machine-output").innerText = "Maschinen‑Sprache: " + machine;
+  document.getElementById("link-output").innerText = "LINK: " + link;
 }
 
+/* NET‑Verbindung */
+NET = {
+  CONNECT: function(a,b){
+    document.getElementById("net-output").innerText = "NET: " + a + " → " + b + " verbunden";
+  }
+};
+
+NET.CONNECT("STATUS_CHECKER", "VOLLKREIS_ENGINE");
+
+/* Beispiel‑Status */
+VollkreisEngine("READY");
+</script>
+
+</body>
+</html>
