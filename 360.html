@@ -1,0 +1,127 @@
+<div class="vollkreis-engine">
+
+  <h2>VOLLKREIS‑ENGINE • 360°</h2>
+  <p>Beweisbare 3‑EVO‑Technologie</p>
+
+  <!-- 3 EVOS -->
+  <div class="evo-section">
+    <h3>3 EVOS</h3>
+
+    <div class="evo">
+      <strong>[Boden‑EVO](ca://s?q=Boden_EVO_erklaeren)</strong><br>
+      Achsen: Y/Z<br>
+      Pointer: Ground‑Pointer<br>
+      Bewegung: Vor / Rück<br>
+      Bereich: Pfad, Struktur, Routing
+    </div>
+
+    <div class="evo">
+      <strong>[Luft‑EVO](ca://s?q=Luft_EVO_erklaeren)</strong><br>
+      Achse: X<br>
+      Pointer: Air‑Pointer<br>
+      Bewegung: Hoch / Tief<br>
+      Bereich: Layer, Höhe, Architektur
+    </div>
+
+    <div class="evo">
+      <strong>[Orbit‑EVO](ca://s?q=Orbit_EVO_erklaeren)</strong><br>
+      Achsen: O/H<br>
+      Pointer: Orbit‑Pointer<br>
+      Bewegung: Umlauf links / rechts<br>
+      Bereich: Ursprung, Kern, Wiederholung
+    </div>
+  </div>
+
+  <!-- 360° Grad-Skala -->
+  <div class="grad-section">
+    <h3>360° Grad‑Skala</h3>
+
+    <ul>
+      <li><strong>0°</strong> – Boden‑Start (Y)</li>
+      <li><strong>60°</strong> – Boden‑Struktur (Z)</li>
+      <li><strong>120°</strong> – Luft‑Layer (X/T)</li>
+      <li><strong>180°</strong> – Orbit‑Ursprung (O)</li>
+      <li><strong>240°</strong> – Orbit‑Kern (H)</li>
+      <li><strong>300°</strong> – Orbit‑Diamant (H)</li>
+      <li><strong>360°</strong> – Vollkreis geschlossen (O/H)</li>
+    </ul>
+  </div>
+
+  <!-- Bewegungslogik -->
+  <div class="bewegung-section">
+    <h3>8‑Fach Bewegungslogik</h3>
+
+    <ul>
+      <li>Boden: Vor / Rück</li>
+      <li>Luft: Hoch / Tief</li>
+      <li>Orbit: Umlauf links / rechts</li>
+      <li>Meta‑Orbit: Ursprung öffnen / Kern schließen</li>
+    </ul>
+  </div>
+
+  <!-- Fehlerwege -->
+  <div class="fehler-section">
+    <h3>Fehlerwege</h3>
+
+    <ul>
+      <li>Datei fehlt → Y</li>
+      <li>Pfad falsch → Z</li>
+      <li>Layer falsch → T</li>
+      <li>Struktur unklar → X</li>
+      <li>Ursprung falsch → O</li>
+      <li>Kern bricht → H</li>
+      <li>Orbit unsichtbar → Ghost‑Orbit</li>
+    </ul>
+  </div>
+
+  <!-- Echtzeit-Diagnose -->
+  <div class="diagnose-section">
+    <h3>Echtzeit‑Diagnose</h3>
+
+    <pre id="vollkreis-diagnose">Warte auf Status…</pre>
+  </div>
+
+</div>
+
+<style>
+  .vollkreis-engine { 
+    background:#111; 
+    color:#0f0; 
+    padding:20px; 
+    font-family:Consolas; 
+    border-left:4px solid #0f0;
+  }
+  .evo-section, .grad-section, .bewegung-section, .fehler-section {
+    margin-bottom:30px;
+  }
+  .evo { 
+    background:#000; 
+    padding:10px; 
+    margin:10px 0; 
+    border-left:3px solid #0f0;
+  }
+</style>
+
+<script>
+  // Mini-Diagnose für Vollkreis-Engine
+  function vollkreisDiagnose(status) {
+    const map = {
+      OK: "Boden‑EVO aktiv",
+      READY: "Boden‑Start",
+      COMPATIBLE: "Luft‑Synergy",
+      FIXED: "Boden‑Reparatur",
+      DONE: "Boden‑Ruhe",
+      HELP: "Luft‑Hilfe",
+      UNCLEAR: "Luft‑Analyse",
+      ERROR: "Orbit‑Block",
+      QI: "Orbit‑Wahrheit",
+      FC: "Orbit‑Energie",
+      CORE: "Orbit‑Kern"
+    };
+    document.getElementById("vollkreis-diagnose").innerText =
+      "Status: " + status + " → " + (map[status] || "Unbekannt");
+  }
+
+  // Beispiel: Setze Diagnose
+  vollkreisDiagnose("READY");
+</script>
