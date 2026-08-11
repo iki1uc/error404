@@ -26,6 +26,31 @@
    - Wenn Kern bricht → HOME‑Achse (◆)
    - Wenn Orbit unsichtbar → GHOST‑ORBIT prüfen
 -->
+function diagnosePage(status, page) {
+
+    // IKEA‑NAVI‑DREIECK
+    const navi = {
+        Y: "links prüfen",
+        Z: "rechts korrigieren",
+        X: "Höhe / Struktur prüfen",
+        T: "Tiefe / Layer prüfen",
+        O: "Ursprung / Startpunkt prüfen"
+    };
+
+    // Fehler‑Richtungslogik
+    const direction =
+        status === "MISSING" ? navi.Y :
+        status === "ERROR"   ? navi.T :
+        status === "UNCLEAR" ? navi.X :
+        status === "HELP"    ? navi.Z :
+        navi.O;
+
+    return {
+        page,
+        status,
+        direction
+    };
+}
 
 
 -->
