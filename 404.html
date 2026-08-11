@@ -1,6 +1,6 @@
 <!--
   Page Status Checker
-  © iki1uc — MIT License (see LICENSE file in repo)
+  © iki1uc wieimmer MIT License (see LICENSE file in repo)
   https://github.com/iki1uc
 -->
 <script>
@@ -16,7 +16,7 @@ const STATUS_TYPES = {
     FIXED:   { priority: 5, category: "fixed",        cause: "Repaired",          effect: "Stable",     impact: 2 },
     DONE:    { priority: 6, category: "done",         cause: "Completed",         effect: "Idle",       impact: 1 },
     HELP:    { priority: 7, category: "assistance",   cause: "Needs assistance",  effect: "Support",    impact: 2 },
-    UNCLEAR: { priority: 8, category: "unclear",       cause: "Unclear",          effect: "Analyze",    impact: 5 }
+    UNCLEAR: { priority: 8, category: "unclear",      cause: "Unclear",           effect: "Analyze",    impact: 5 }
 };
 
 // List of pages to check
@@ -42,9 +42,35 @@ async function checkPage(path) {
     }
 }
 
-// Builds a diagnostic report for one page
+// NEW diagnosePage (the only one)
 function diagnosePage(status, page) {
     const s = STATUS_TYPES[status] || STATUS_TYPES.UNCLEAR;
+
+    const puzzleScore = {
+        OK: 100, READY: 80, COMPATIBLE: 90, FIXED: 70, DONE: 60,
+        HELP: 40, UNCLEAR: 30, ERROR: 10,
+        QI: 120, FC: 140, CORE: 200
+    }[status] || 0;
+
+    const flow = {
+        OK: "clear-flow",
+        READY: "entry-flow",
+        COMPATIBLE: "synergy-flow",
+        FIXED: "repair-flow",
+        DONE: "exit-flow",
+        HELP: "assist-flow",
+        UNCLEAR: "fog-flow",
+        ERROR: "block-flow",
+        QI: "truth-flow",
+        FC: "energy-flow",
+        CORE: "core-flow"
+    }[status] || "unknown-flow";
+
+    const tetrisScore = s.priority * 11 + s.impact * 9;
+
+    const wette = s.priority + puzzleScore;
+    const slide = s.impact + tetrisScore;
+
     return {
         page,
         status,
@@ -52,7 +78,12 @@ function diagnosePage(status, page) {
         category: s.category,
         cause: s.cause,
         effect: s.effect,
-        impact: s.impact
+        impact: s.impact,
+        puzzleScore,
+        tetrisScore,
+        flow,
+        wette,
+        slide
     };
 }
 
@@ -98,4 +129,5 @@ function buildComparisonMatrix(results) {
         }, null, 2);
 })();
 </script>
+
 <pre id="status-report">Loading status report…</pre>
