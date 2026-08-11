@@ -1,0 +1,106 @@
+<div id="vollkreis-engine" style="background:#111;color:#0f0;padding:20px;font-family:Consolas;border-left:4px solid #0f0;">
+  <h2>VOLLKREIS‑ENGINE • NET‑LINK‑CONNECT</h2>
+  <p>3‑EVO‑Maschinen‑Sprache aktiv</p>
+
+  <div id="status-output" style="background:#000;padding:10px;margin-top:20px;border-left:3px solid #0f0;">
+    Status: Warten…
+  </div>
+
+  <div id="evo-output" style="background:#000;padding:10px;margin-top:20px;border-left:3px solid #0f0;">
+    EVO: —
+  </div>
+
+  <div id="axis-output" style="background:#000;padding:10px;margin-top:20px;border-left:3px solid #0f0;">
+    Achse: —
+  </div>
+
+  <div id="pointer-output" style="background:#000;padding:10px;margin-top:20px;border-left:3px solid #0f0;">
+    Pointer: —
+  </div>
+
+  <div id="machine-output" style="background:#000;padding:10px;margin-top:20px;border-left:3px solid #0f0;">
+    Maschinen‑Sprache: —
+  </div>
+
+  <div id="net-output" style="background:#000;padding:10px;margin-top:20px;border-left:3px solid #0f0;">
+    NET: verbunden
+  </div>
+
+  <div id="link-output" style="background:#000;padding:10px;margin-top:20px;border-left:3px solid #0f0;">
+    LINK: —
+  </div>
+</div>
+
+<script>
+  // STATUS CHECKER → VOLLKREIS ENGINE
+  function VollkreisEngine(status) {
+
+    // Status anzeigen
+    document.getElementById("status-output").innerText = "Status: " + status;
+
+    // Status → EVO
+    let evo = "";
+    let axis = "";
+    let pointer = "";
+    let machine = "";
+    let link = "";
+
+    switch(status) {
+      case "OK":
+      case "READY":
+      case "FIXED":
+      case "DONE":
+        evo = "EVO-GROUND";
+        axis = "Y/Z";
+        pointer = "GROUND EDIT POINTER";
+        link = "Y → Z";
+        break;
+
+      case "HELP":
+      case "UNCLEAR":
+        evo = "EVO-AIR";
+        axis = "X";
+        pointer = "AIR EDIT POINTER";
+        link = "X";
+        break;
+
+      case "ERROR":
+      case "QI":
+      case "FC":
+      case "CORE":
+        evo = "EVO-ORBIT";
+        axis = "O/H";
+        pointer = "ORBIT EDIT POINTER";
+        link = "O → H";
+        break;
+
+      default:
+        evo = "UNKNOWN";
+        axis = "—";
+        pointer = "—";
+        link = "—";
+    }
+
+    // Maschinen‑Sprache erzeugen
+    machine = "MSIG{" + evo + "|" + axis + "|" + pointer + "}";
+
+    // Ausgabe
+    document.getElementById("evo-output").innerText = "EVO: " + evo;
+    document.getElementById("axis-output").innerText = "Achse: " + axis;
+    document.getElementById("pointer-output").innerText = "Pointer: " + pointer;
+    document.getElementById("machine-output").innerText = "Maschinen‑Sprache: " + machine;
+    document.getElementById("link-output").innerText = "LINK: " + link;
+  }
+
+  // NET‑Verbindung simulieren
+  NET = {
+    CONNECT: function(a,b){
+      document.getElementById("net-output").innerText = "NET: " + a + " → " + b + " verbunden";
+    }
+  };
+
+  NET.CONNECT("STATUS_CHECKER", "VOLLKREIS_ENGINE");
+
+  // Beispiel‑Status
+  VollkreisEngine("READY");
+</script>
