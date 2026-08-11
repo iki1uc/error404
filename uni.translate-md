@@ -1,16 +1,14 @@
 const UT = {
-  "OK": "W",
-  "READY": "A",
-  "COMPATIBLE": "S",
-  "FIXED": "D",
-  "DONE": "Q",
-  "HELP": "E",
-  "UNCLEAR": "Y",
-  "ERROR": "C"
+  "OK": "W",          // alles gut
+  "READY": "A",       // bereit
+  "COMPATIBLE": "S",  // passt zusammen
+  "FIXED": "D",       // repariert
+  "DONE": "Q",        // fertig
+  "HELP": "E",        // braucht Hilfe
+  "UNCLEAR": "Y",     // unklar
+  "ERROR": "C",       // normaler Fehler
+
+  "QI-ERROR": "QI",   // klarer Fehler (wahr, direkt)
+  "FIRST-CLASS-ERROR": "FC", // edler Fehler (veredelt)
+  "ERROR-CORE": "CORE" // Fehler-Kern (Meta-Ebene)
 };
-
-
-## License
-
-MIT — free to use and modify. Author credit (**© iki1uc wieimmer**) must be
-retained per the license terms. See `LICENSE`.
