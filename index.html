@@ -130,9 +130,29 @@ Datei: sub.html
 </div>
 </div>
 
-<!-- CSV -->
-<div class="section">
-<div class="title">CSV‑ROHDATEN</div>
-<div class="block">
-datei-bedeutung-5.csv<br>
-ebene-datei-5.csv<br>
+function diagnosePage(status, page) {
+
+    // IKEA‑NAVI‑DREIECK
+    const navi = {
+        Y: "links prüfen",
+        Z: "rechts korrigieren",
+        X: "Höhe / Struktur prüfen",
+        T: "Tiefe / Layer prüfen",
+        O: "Ursprung / Startpunkt prüfen"
+    };
+
+    // Fehler‑Richtungslogik
+    const direction =
+        status === "MISSING" ? navi.Y :
+        status === "ERROR"   ? navi.T :
+        status === "UNCLEAR" ? navi.X :
+        status === "HELP"    ? navi.Z :
+        navi.O;
+
+    return {
+        page,
+        status,
+        direction
+    };
+}
+
