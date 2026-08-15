@@ -1,181 +1,21 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<title>GEO‑POINT ALPHA • VOLLKREIS‑ENGINE</title>
-
-<style>
-body { background:#000; color:#0f0; font-family:Consolas; padding:20px; }
-h1 { color:#0f0; }
-pre { background:#111; padding:20px; border-left:4px solid #0f0; }
-.section { margin-bottom:40px; }
-.title { color:#0f0; font-size:22px; margin-bottom:10px; }
-.block { background:#111; padding:15px; border-left:3px solid #0f0; margin-bottom:20px; }
-.vollkreis-engine { background:#111; color:#0f0; padding:20px; border-left:4px solid #0f0; }
-.evo { background:#000; padding:10px; margin:10px 0; border-left:3px solid #0f0; }
-.output { background:#000; padding:10px; margin-top:20px; border-left:3px solid #0f0; }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GEO‑POINT ALPHA — Einfach</title>
+  <style>body{background:#000;color:#0f0;font-family:Consolas;padding:20px}</style>
 </head>
-
 <body>
-
-<h1>GEO‑POINT ALPHA</h1>
-<pre>© iki1uc wieimmer</pre>
-
-<!-- DIAMANT‑AXIOME -->
-<div class="section">
-<div class="title">DIAMANT‑AXIOME</div>
-<div class="block">
-◉ geo.md — Punkt‑Axiom  
-◎ pyr.md — Achsen‑Axiom  
-△ pyramide.md — Pyramiden‑Axiom  
-▣ cube.md — Cube‑Axiom  
-↺ cycle.md — Zyklus‑Axiom  
-◆ diamant.md — Diamant‑Axiom  
-</div>
-</div>
-
-<!-- VOLLKREIS‑ENGINE -->
-<div class="vollkreis-engine">
-
-  <h2>VOLLKREIS‑ENGINE • NET‑LINK‑CONNECT • 360°</h2>
-  <p>Beweisbare 3‑EVO‑Technologie</p>
-
-  <!-- 3 EVOS -->
-  <div class="evo-section">
-    <h3>3 EVOS</h3>
-
-    <div class="evo">
-      <strong>[Boden‑EVO](ca://s?q=Boden_EVO_erklaeren)</strong><br>
-      Achsen: Y/Z<br>
-      Pointer: Ground‑Pointer<br>
-      Bewegung: Vor / Rück<br>
-      Bereich: Pfad, Struktur, Routing
-    </div>
-
-    <div class="evo">
-      <strong>[Luft‑EVO](ca://s?q=Luft_EVO_erklaeren)</strong><br>
-      Achse: X<br>
-      Pointer: Air‑Pointer<br>
-      Bewegung: Hoch / Tief<br>
-      Bereich: Layer, Höhe, Architektur
-    </div>
-
-    <div class="evo">
-      <strong>[Orbit‑EVO](ca://s?q=Orbit_EVO_erklaeren)</strong><br>
-      Achsen: O/H<br>
-      Pointer: Orbit‑Pointer<br>
-      Bewegung: Umlauf links / rechts<br>
-      Bereich: Ursprung, Kern, Wiederholung
-    </div>
-  </div>
-
-  <!-- 360° Grad-Skala -->
-  <div class="grad-section">
-    <h3>360° Grad‑Skala</h3>
-    <ul>
-      <li><strong>0°</strong> – Boden‑Start (Y)</li>
-      <li><strong>60°</strong> – Boden‑Struktur (Z)</li>
-      <li><strong>120°</strong> – Luft‑Layer (X/T)</li>
-      <li><strong>180°</strong> – Orbit‑Ursprung (O)</li>
-      <li><strong>240°</strong> – Orbit‑Kern (H)</li>
-      <li><strong>300°</strong> – Orbit‑Diamant (H)</li>
-      <li><strong>360°</strong> – Vollkreis geschlossen (O/H)</li>
-    </ul>
-  </div>
-
-  <!-- Bewegungslogik -->
-  <div class="bewegung-section">
-    <h3>8‑Fach Bewegungslogik</h3>
-    <ul>
-      <li>Boden: Vor / Rück</li>
-      <li>Luft: Hoch / Tief</li>
-      <li>Orbit: Umlauf links / rechts</li>
-      <li>Meta‑Orbit: Ursprung öffnen / Kern schließen</li>
-    </ul>
-  </div>
-
-  <!-- Fehlerwege -->
-  <div class="fehler-section">
-    <h3>Fehlerwege</h3>
-    <ul>
-      <li>Datei fehlt → Y</li>
-      <li>Pfad falsch → Z</li>
-      <li>Layer falsch → T</li>
-      <li>Struktur unklar → X</li>
-      <li>Ursprung falsch → O</li>
-      <li>Kern bricht → H</li>
-      <li>Orbit unsichtbar → Ghost‑Orbit</li>
-    </ul>
-  </div>
-
-  <!-- Echtzeit-Diagnose -->
-  <div class="diagnose-section">
-    <h3>Echtzeit‑Diagnose</h3>
-    <pre id="vollkreis-diagnose">Warte auf Status…</pre>
-  </div>
-
-  <!-- NET-LINK OUTPUT -->
-  <div id="status-output" class="output">Status: —</div>
-  <div id="evo-output" class="output">EVO: —</div>
-  <div id="axis-output" class="output">Achse: —</div>
-  <div id="pointer-output" class="output">Pointer: —</div>
-  <div id="machine-output" class="output">Maschinen‑Sprache: —</div>
-  <div id="net-output" class="output">NET: —</div>
-  <div id="link-output" class="output">LINK: —</div>
-
-</div>
-
-<script>
-/* STATUS CHECKER → VOLLKREIS ENGINE */
-function VollkreisEngine(status) {
-
-  document.getElementById("status-output").innerText = "Status: " + status;
-
-  let evo="", axis="", pointer="", machine="", link="";
-
-  switch(status) {
-    case "OK":
-    case "READY":
-    case "FIXED":
-    case "DONE":
-      evo="EVO-GROUND"; axis="Y/Z"; pointer="GROUND EDIT POINTER"; link="Y → Z"; break;
-
-    case "HELP":
-    case "UNCLEAR":
-      evo="EVO-AIR"; axis="X"; pointer="AIR EDIT POINTER"; link="X"; break;
-
-    case "ERROR":
-    case "QI":
-    case "FC":
-    case "CORE":
-      evo="EVO-ORBIT"; axis="O/H"; pointer="ORBIT EDIT POINTER"; link="O → H"; break;
-
-    default:
-      evo="UNKNOWN"; axis="—"; pointer="—"; link="—";
-  }
-
-  machine = "MSIG{" + evo + "|" + axis + "|" + pointer + "}";
-
-  document.getElementById("evo-output").innerText = "EVO: " + evo;
-  document.getElementById("axis-output").innerText = "Achse: " + axis;
-  document.getElementById("pointer-output").innerText = "Pointer: " + pointer;
-  document.getElementById("machine-output").innerText = "Maschinen‑Sprache: " + machine;
-  document.getElementById("link-output").innerText = "LINK: " + link;
-}
-
-/* NET‑Verbindung */
-NET = {
-  CONNECT: function(a,b){
-    document.getElementById("net-output").innerText = "NET: " + a + " → " + b + " verbunden";
-  }
-};
-
-NET.CONNECT("STATUS_CHECKER", "VOLLKREIS_ENGINE");
-
-/* Beispiel‑Status */
-VollkreisEngine("READY");
-</script>
-
+  <h1>GEO‑POINT ALPHA — Einfach</h1>
+  <p>© iki1uc wieimmer</p>
+  <p>So benutzt Du die Seite lokal:</p>
+  <ol>
+    <li>Repository herunterladen oder als ZIP herunterladen.</li>
+    <li>Doppelklicke auf index-lite.html oder starte einen kleinen Server:</li>
+    <pre>python -m http.server 8000</pre>
+    <li>Öffne im Browser: <code>http://localhost:8000</code></li>
+  </ol>
+  <p>Um die Seite öffentlich zu machen: Settings → Pages → main / root auf GitHub.</p>
 </body>
 </html>
