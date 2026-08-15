@@ -1,8 +1,14 @@
+<!--
+  © iki1uc wieimmer — CONTINIUM · Unified OS7
+  Licensed under the MIT License (see LICENSE).
+  Branding: "© iki1uc wieimmer" should remain visible on public pages.
+  No warranty — use at your own risk.
+-->
 <!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>ERROR 404 • VOLLKREIS‑ENGINE</title>
+<title>ERROR 404 • GEO‑POINT ALPHA</title>
 
 <style>
 body { background:#000; color:#0f0; font-family:Consolas; padding:20px; }
@@ -91,7 +97,7 @@ function VollkreisEngine(status) {
 }
 
 /* NET‑Verbindung */
-NET = {
+const NET = {
   CONNECT: function(a,b){
     document.getElementById("net-output").innerText = "NET: " + a + " → " + b + " verbunden";
   }

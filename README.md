@@ -1,29 +1,31 @@
- 
-Site Status Checker
+# GEO‑POINT ALPHA / ERROR404 — VOLLKREIS‑ENGINE
 
-A small, self-contained diagnostic tool for websites. It checks which pages/sections of a site are reachable, classifies their status, and compares pairs of sections to see how compatible they are.
+© iki1uc wieimmer · CONTINIUM · Unified OS7
 
-What it does
-Checks a fixed list of pages on the site (via HTTP HEAD requests).
-Classifies each page's status as one of: OK, MISSING (wrong path), NETWORK ERROR, READY, COMPATIBLE, FIXED, DONE, HELP NEEDED, UNCLEAR.
-Computes a small set of properties for each status (a priority score, a category label, likely cause, likely effect, and an estimated impact/horizon score).
-Compares pairs of pages and rates how well they "pair up" (HOT / SYNC / START / LOW / FAIL) based on how similar their status, category, and impact score are.
-Displays the results as a readable report in the browser.
-Files
-File	Purpose
-index.html	Landing page with the human-readable status report
-404.html	Automatic diagnostic scanner, can be used as a custom 404 page
-translate.md	Full list of internal short codes and their plain-language meaning
-README.md	This file
-LICENSE	MIT License
-Usage
+Site Status Checker — eine kleine, selbst‑enthaltene Diagnostik‑Seite (HTML/JS), die Seitenstatus prüft und als Report ausgibt.
 
-Open index.html in a browser to see the status report. To use 404.html as a real 404 page on GitHub Pages: repository Settings → Pages → Source: branch main, folder /.
+## Lizenz
+Dieses Projekt ist unter der MIT License lizenziert. Siehe LICENSE.
 
-Why the internal short codes?
+**Branding:** Die sichtbare Projektheader‑Zeile `© iki1uc wieimmer` sollte auf öffentlichen Seiten beibehalten werden.
 
-The tool uses short internal codes (a few letters, e.g. RDY, FIT, MISS) to keep the data compact and easy to process in code. A translation table (translate.md) maps every code to a plain-language label, so the output stays readable for anyone viewing the page, without needing to know the internal codes.
+## Schnellstart (lokal)
+1. Klone das Repo:
+   ```bash
+   git clone https://github.com/iki1uc/error404.git
+   ```
+2. Starte einen einfachen HTTP‑Server im Repo‑Ordner:
+   - Node: `npx http-server`
+   - Python: `python -m http.server 8000`
+3. Öffne `http://localhost:8080` (oder `:8000`) in deinem Browser.
 
-License
+## GitHub Pages (öffentliche Ansicht)
+1. Stelle das Repository auf GitHub auf Public.
+2. Aktiviere GitHub Pages: Settings → Pages → Source: branch `main`, folder `/` (root).
+3. Nach ein paar Minuten ist die Seite verfügbar unter: `https://iki1uc.github.io/error404/`.
 
-MIT — free to use and modify. Author credit (© iki1uc wieimmer) must be retained per the license terms. See LICENSE.
+## Mitmachen
+Siehe CONTRIBUTING.md für Details zu Issues, Branches und PRs.
+
+## Support & Kontakte
+Bei Problemen öffne bitte ein Issue. Bitte poste keine sensiblen Daten.
