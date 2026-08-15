@@ -1,4 +1,8 @@
- 
+Licence & Public Use
+- This project is released under the MIT License. See LICENSE.
+- Branding: The visible line "© iki1uc wieimmer" should remain on public pages derived from this project.
+- GitHub Pages: To publish the site, go to Repository → Settings → Pages → Source: branch main / folder: / (root), then save. After a few minutes the site will be available at: https://iki1uc.github.io/error404/
+- 
 Site Status Checker
 
 A small, self-contained diagnostic tool for websites. It checks which pages/sections of a site are reachable, classifies their status, and compares pairs of sections to see how compatible they are.
@@ -24,6 +28,3 @@ Why the internal short codes?
 
 The tool uses short internal codes (a few letters, e.g. RDY, FIT, MISS) to keep the data compact and easy to process in code. A translation table (translate.md) maps every code to a plain-language label, so the output stays readable for anyone viewing the page, without needing to know the internal codes.
 
-License
-
-MIT — free to use and modify. Author credit (© iki1uc wieimmer) must be retained per the license terms. See LICENSE.
