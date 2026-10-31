@@ -1,181 +1,158 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<title>GEO‑POINT ALPHA • VOLLKREIS‑ENGINE</title>
-
+<meta charset="UTF-8" />
+<title>CONTINIUM · ALL‑X‑ALL Unified OS · iki1uc</title>
 <style>
-body { background:#000; color:#0f0; font-family:Consolas; padding:20px; }
-h1 { color:#0f0; }
-pre { background:#111; padding:20px; border-left:4px solid #0f0; }
-.section { margin-bottom:40px; }
-.title { color:#0f0; font-size:22px; margin-bottom:10px; }
-.block { background:#111; padding:15px; border-left:3px solid #0f0; margin-bottom:20px; }
-.vollkreis-engine { background:#111; color:#0f0; padding:20px; border-left:4px solid #0f0; }
-.evo { background:#000; padding:10px; margin:10px 0; border-left:3px solid #0f0; }
-.output { background:#000; padding:10px; margin-top:20px; border-left:3px solid #0f0; }
+body { margin:0; background:#000; color:#0f0; font-family:Consolas, monospace; }
+#out {
+    position:absolute; top:20px; left:20px;
+    width:420px; height:540px; overflow:auto;
+    background:#111; border-left:3px solid #6cf; padding:15px;
+    white-space:pre-wrap; font-family:monospace;
+}
+canvas { display:block; width:100vw; height:100vh; }
+h1 { color:#6cf; text-align:center; margin-top:20px; }
 </style>
 </head>
-
 <body>
+<h1>CONTINIUM · ALL‑X‑ALL Unified OS</h1>
+<pre id="out">Starte CONTINIUM…</pre>
+<canvas id="cv"></canvas>
 
-<h1>GEO‑POINT ALPHA</h1>
-<pre>© iki1uc wieimmer</pre>
+<script type="module">
+(async function start() {
+    const out = document.getElementById('out');
+    function log(...args){ console.log(...args); out.textContent += '\\n' + args.map(a => typeof a === 'string' ? a : JSON.stringify(a,null,2)).join(' '); }
+    function error(...args){ console.error(...args); out.textContent += '\\nERROR: ' + args.map(a => a && a.stack ? a.stack : String(a)).join(' '); }
 
-<!-- DIAMANT‑AXIOME -->
-<div class="section">
-<div class="title">DIAMANT‑AXIOME</div>
-<div class="block">
-◉ geo.md — Punkt‑Axiom  
-◎ pyr.md — Achsen‑Axiom  
-△ pyramide.md — Pyramiden‑Axiom  
-▣ cube.md — Cube‑Axiom  
-↺ cycle.md — Zyklus‑Axiom  
-◆ diamant.md — Diamant‑Axiom  
-</div>
-</div>
+    // dynamische Ladereihenfolge — so bricht nicht die ganze Seite bei einem fehlenden Modul
+    const imports = {
+        QUANT: './JS/CONST_QUANT.js',
+        CONTINIUM_KEY: './JS/CONTINIUM_KEY.js',
+        MIND_QUANT: './JS/MIND_QUANT.js',
+        NC_PIPELINE: './JS/NC_PIPELINE.js',
+        UHRWERK: './JS/uhrwerk.js',
+        MATRIX_360: './JS/MATRIX_360.js',
+        SLIDE: './JS/slide.js',
+        RUN8: './JS/real.reaspo.scan.js',
+        orbitTickMod: './JS/lauf.js',
+        UM: './JS/UM.js',
+        PIPEBUILD: './JS/Pipebuild.js'
+    };
 
-<!-- VOLLKREIS‑ENGINE -->
-<div class="vollkreis-engine">
+    const loaded = {};
+    try {
+        // Promise.allSettled, damit wir Fehler pro Modul sehen
+        const promises = Object.entries(imports).map(([key, path]) =>
+            import(path).then(m => ({ key, m })).catch(err => ({ key, err, path }))
+        );
+        const results = await Promise.all(promises);
+        for (const r of results) {
+            if (r.err) {
+                error(`Fehler beim Laden ${r.key} from ${r.path}:`, r.err);
+            } else {
+                loaded[r.key] = r.m;
+                log(`geladen: ${r.key}`);
+            }
+        }
+    } catch (e) {
+        error('Unerwarteter Import-Fehler:', e);
+    }
 
-  <h2>VOLLKREIS‑ENGINE • NET‑LINK‑CONNECT • 360°</h2>
-  <p>Beweisbare 3‑EVO‑Technologie</p>
+    // Guard: überprüfe wichtige Exporte
+    const QUANT = loaded.QUANT?.QUANT ?? loaded.QUANT?.default;
+    const CONTINIUM_KEY = loaded.CONTINIUM_KEY?.CONTINIUM_KEY ?? loaded.CONTINIUM_KEY?.default;
+    const orbitTick = loaded.orbitTickMod?.orbitTick ?? loaded.orbitTickMod?.default;
+    const { WHIRL, PIPELINE_3_6, CONTINIUM_TRUTH } = loaded.UM ?? {};
 
-  <!-- 3 EVOS -->
-  <div class="evo-section">
-    <h3>3 EVOS</h3>
+    if (!QUANT || !CONTINIUM_KEY) {
+        error('Wichtige Module fehlen: QUANT oder CONTINIUM_KEY. Prüfe die Dateinamen/Exports im ./JS Ordner.');
+        return;
+    }
 
-    <div class="evo">
-      <strong>[Boden‑EVO](ca://s?q=Boden_EVO_erklaeren)</strong><br>
-      Achsen: Y/Z<br>
-      Pointer: Ground‑Pointer<br>
-      Bewegung: Vor / Rück<br>
-      Bereich: Pfad, Struktur, Routing
-    </div>
+    // canvas initialisieren mit devicePixelRatio-scaling
+    const cv = document.getElementById('cv');
+    const ctx = cv.getContext('2d');
+    function resizeCanvas(){
+        const dpr = window.devicePixelRatio || 1;
+        cv.width = Math.floor(window.innerWidth * dpr);
+        cv.height = Math.floor(window.innerHeight * dpr);
+        cv.style.width = window.innerWidth + 'px';
+        cv.style.height = window.innerHeight + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
 
-    <div class="evo">
-      <strong>[Luft‑EVO](ca://s?q=Luft_EVO_erklaeren)</strong><br>
-      Achse: X<br>
-      Pointer: Air‑Pointer<br>
-      Bewegung: Hoch / Tief<br>
-      Bereich: Layer, Höhe, Architektur
-    </div>
+    // Hilfs-Funktionen (falls Module fehlen, Ersatzfunktionen)
+    function ATOM_ANIM(t){
+        try { const seq = QUANT.atom.seq; return seq[Math.floor((t*10) % seq.length)]; }
+        catch(e){ return '?'; }
+    }
+    function SINGULAR_VIEW(t){
+        try { const p = CONTINIUM_KEY.pos(t); const s = QUANT.singular(p); return { p, s }; }
+        catch(e){ return { p:null, s:{ radius:0 } }; }
+    }
 
-    <div class="evo">
-      <strong>[Orbit‑EVO](ca://s?q=Orbit_EVO_erklaeren)</strong><br>
-      Achsen: O/H<br>
-      Pointer: Orbit‑Pointer<br>
-      Bewegung: Umlauf links / rechts<br>
-      Bereich: Ursprung, Kern, Wiederholung
-    </div>
-  </div>
+    function draw(scene){
+        ctx.clearRect(0,0,cv.width,cv.height);
+        const cx = window.innerWidth/2;
+        const cy = window.innerHeight/2;
 
-  <!-- 360° Grad-Skala -->
-  <div class="grad-section">
-    <h3>360° Grad‑Skala</h3>
-    <ul>
-      <li><strong>0°</strong> – Boden‑Start (Y)</li>
-      <li><strong>60°</strong> – Boden‑Struktur (Z)</li>
-      <li><strong>120°</strong> – Luft‑Layer (X/T)</li>
-      <li><strong>180°</strong> – Orbit‑Ursprung (O)</li>
-      <li><strong>240°</strong> – Orbit‑Kern (H)</li>
-      <li><strong>300°</strong> – Orbit‑Diamant (H)</li>
-      <li><strong>360°</strong> – Vollkreis geschlossen (O/H)</li>
-    </ul>
-  </div>
+        // Dreieck nur wenn qsxi existiert
+        if (scene.qsxi && scene.qsxi.tokio && scene.qsxi.corlu && scene.qsxi.hh) {
+            ctx.strokeStyle = "#6cf";
+            ctx.beginPath();
+            ctx.moveTo(cx + scene.qsxi.tokio.x/30, cy + scene.qsxi.tokio.y/30);
+            ctx.lineTo(cx + scene.qsxi.corlu.x/30, cy + scene.qsxi.corlu.y/30);
+            ctx.lineTo(cx + scene.qsxi.hh.x/30,    cy + scene.qsxi.hh.y/30);
+            ctx.closePath(); ctx.stroke();
+        }
 
-  <!-- Bewegungslogik -->
-  <div class="bewegung-section">
-    <h3>8‑Fach Bewegungslogik</h3>
-    <ul>
-      <li>Boden: Vor / Rück</li>
-      <li>Luft: Hoch / Tief</li>
-      <li>Orbit: Umlauf links / rechts</li>
-      <li>Meta‑Orbit: Ursprung öffnen / Kern schließen</li>
-    </ul>
-  </div>
+        ctx.fillStyle = "#0f0"; ctx.font = "32px Consolas";
+        ctx.fillText(scene.atom ?? '?', cx - 16, cy - 16);
 
-  <!-- Fehlerwege -->
-  <div class="fehler-section">
-    <h3>Fehlerwege</h3>
-    <ul>
-      <li>Datei fehlt → Y</li>
-      <li>Pfad falsch → Z</li>
-      <li>Layer falsch → T</li>
-      <li>Struktur unklar → X</li>
-      <li>Ursprung falsch → O</li>
-      <li>Kern bricht → H</li>
-      <li>Orbit unsichtbar → Ghost‑Orbit</li>
-    </ul>
-  </div>
+        ctx.strokeStyle = "#f00";
+        ctx.beginPath();
+        ctx.arc(cx, cy, (scene.singular?.s?.radius ?? 0) / 300, 0, Math.PI*2);
+        ctx.stroke();
+    }
 
-  <!-- Echtzeit-Diagnose -->
-  <div class="diagnose-section">
-    <h3>Echtzeit‑Diagnose</h3>
-    <pre id="vollkreis-diagnose">Warte auf Status…</pre>
-  </div>
+    // Start QUANT etc.
+    try { if (typeof QUANT.start === 'function') QUANT.start(); } catch(e){ log('QUANT.start() fehlgeschlagen:', e); }
 
-  <!-- NET-LINK OUTPUT -->
-  <div id="status-output" class="output">Status: —</div>
-  <div id="evo-output" class="output">EVO: —</div>
-  <div id="axis-output" class="output">Achse: —</div>
-  <div id="pointer-output" class="output">Pointer: —</div>
-  <div id="machine-output" class="output">Maschinen‑Sprache: —</div>
-  <div id="net-output" class="output">NET: —</div>
-  <div id="link-output" class="output">LINK: —</div>
+    let lastTime = performance.now();
+    function CONTINIUM_LOOP(){
+        const t = performance.now() * 0.0004;
+        try {
+            const pos = CONTINIUM_KEY.pos?.(t) ?? null;
+            const slide = CONTINIUM_KEY.slideFrame?.(pos) ?? null;
+            const score = CONTINIUM_KEY.stability?.(pos) ?? null;
+            const atom = ATOM_ANIM(t);
+            const qsxi = QUANT.qsxi?.() ?? {};
+            const singular = SINGULAR_VIEW(t);
+            const truth = (typeof CONTINIUM_TRUTH === 'function') ? CONTINIUM_TRUTH() : null;
+            const whirl = (typeof WHIRL === 'function') ? WHIRL({ x:9,y:6,z:3 }) : null;
+            const lauf = (loaded.orbitTickMod?.LAUF?.komplett) ? loaded.orbitTickMod.LAUF.komplett() : null;
 
-</div>
+            const scene = { orbit: pos, slide, score, atom, qsxi, singular, lauf, truth, whirl, quant: QUANT, skills: CONTINIUM_KEY.skills };
+            draw(scene);
+            out.textContent = JSON.stringify(scene, null, 2);
 
-<script>
-/* STATUS CHECKER → VOLLKREIS ENGINE */
-function VollkreisEngine(status) {
+            if (typeof orbitTick === 'function') orbitTick(0.016);
+        } catch (e) {
+            error('Fehler im Loop:', e);
+        }
+        requestAnimationFrame(CONTINIUM_LOOP);
+    }
 
-  document.getElementById("status-output").innerText = "Status: " + status;
+    // PIPEBUILD/BOOT falls vorhanden
+    try { if (typeof loaded.PIPEBUILD?.default === 'function') loaded.PIPEBUILD.default(); else if (typeof loaded.PIPEBUILD?.PIPEBUILD === 'function') loaded.PIPEBUILD.PIPEBUILD(); } catch(e){ log('PIPEBUILD Fehler:', e); }
 
-  let evo="", axis="", pointer="", machine="", link="";
-
-  switch(status) {
-    case "OK":
-    case "READY":
-    case "FIXED":
-    case "DONE":
-      evo="EVO-GROUND"; axis="Y/Z"; pointer="GROUND EDIT POINTER"; link="Y → Z"; break;
-
-    case "HELP":
-    case "UNCLEAR":
-      evo="EVO-AIR"; axis="X"; pointer="AIR EDIT POINTER"; link="X"; break;
-
-    case "ERROR":
-    case "QI":
-    case "FC":
-    case "CORE":
-      evo="EVO-ORBIT"; axis="O/H"; pointer="ORBIT EDIT POINTER"; link="O → H"; break;
-
-    default:
-      evo="UNKNOWN"; axis="—"; pointer="—"; link="—";
-  }
-
-  machine = "MSIG{" + evo + "|" + axis + "|" + pointer + "}";
-
-  document.getElementById("evo-output").innerText = "EVO: " + evo;
-  document.getElementById("axis-output").innerText = "Achse: " + axis;
-  document.getElementById("pointer-output").innerText = "Pointer: " + pointer;
-  document.getElementById("machine-output").innerText = "Maschinen‑Sprache: " + machine;
-  document.getElementById("link-output").innerText = "LINK: " + link;
-}
-
-/* NET‑Verbindung */
-NET = {
-  CONNECT: function(a,b){
-    document.getElementById("net-output").innerText = "NET: " + a + " → " + b + " verbunden";
-  }
-};
-
-NET.CONNECT("STATUS_CHECKER", "VOLLKREIS_ENGINE");
-
-/* Beispiel‑Status */
-VollkreisEngine("READY");
+    // starte Loop
+    CONTINIUM_LOOP();
+})();
 </script>
-
 </body>
 </html>
